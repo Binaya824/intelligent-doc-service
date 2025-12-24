@@ -155,7 +155,12 @@ pip install -r requirements.txt
 CREATE DATABASE intelligent_doc_service;
 ```
 
-### 2. Run Migrations
+### 2. Generate Migration
+```bash
+alembic revision --autogenerate -m "initial schema"
+```
+
+### 3. Run Migrations
 ```bash
 alembic upgrade head
 ```
@@ -184,7 +189,7 @@ fastapi dev app/main.py
 
 Celery must be running separately.
 ```bash
-celery -A app.core.celery_app worker -l info
+celery -A app.core.celery_app.celery_app worker --loglevel=info -Q pdf_processing
 ```
 
 > **Note:** Ensure Redis is running before starting Celery.
