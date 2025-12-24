@@ -256,13 +256,11 @@ Handled by Celery worker:
 
 ### Semantic Query
 ```http
-POST /api/v1/query
+POST /api/v1/documents/:id/query
 ```
 
 **Input:**
-- `document_id`
 - `query` text
-- `top_k`
 
 **Flow:**
 1. Embed query
